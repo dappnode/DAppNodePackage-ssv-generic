@@ -1,0 +1,32 @@
+version: "3.5"
+services:
+  operator:
+    build:
+      context: operator
+      args:
+        OPERATOR_UPSTREAM_VERSION: v1.3.7
+        STAKER_SCRIPTS_VERSION: v0.1.0
+    restart: unless-stopped
+    volumes:
+      - operator-data:/data/operator
+    environment:
+      BUILDER_PROPOSALS: "false"
+      LOG_LEVEL: info
+      EXTRA_OPTS: ""
+      PRIVATE_KEY_PASS: ""
+  dkg:
+    build:
+      context: dkg
+      args:
+        DGK_UPSTREAM_VERSION: v2.1.0
+    restart: on-failure
+    volumes:
+      - operator-data:/data/operator
+      - dkg-data:/data/dkg
+    environment:
+      LOG_LEVEL: info
+      OPERATOR_ID: ""
+      EXTRA_OPTS: ""
+volumes:
+  dkg-data: {}
+  operator-data: {}

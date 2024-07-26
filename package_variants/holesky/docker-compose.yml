@@ -1,0 +1,17 @@
+services:
+  operator:
+    build:
+      args:
+        NETWORK: holesky
+        P2P_TCP_PORT: 12515
+        P2P_UDP_PORT: 13515
+    ports:
+      - 12515:12515/tcp
+      - 13515:13515/udp
+  dkg:
+    build:
+      args:
+        NETWORK: holesky
+        DKG_PORT: 14515
+    ports:
+      - "14515:14515"

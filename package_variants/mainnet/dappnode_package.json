@@ -1,0 +1,10 @@
+{
+  "name": "ssv.dnp.dappnode.eth",
+  "version": "0.1.1",
+  "globalEnvs": [
+    {
+      "envs": ["EXECUTION_CLIENT_MAINNET", "CONSENSUS_CLIENT_MAINNET"],
+      "services": ["operator"]
+    }
+  ]
+}

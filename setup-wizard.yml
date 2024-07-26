@@ -1,0 +1,52 @@
+version: "2"
+fields:
+  - id: setup-mode
+    title: Setup mode
+    description: |-
+      If this is the first install or just a simple update, choose "New operator / Update" option and continue with the installation. If you want to import an existing operator, choose "Import key" and fulfill the inputs below.
+    enum:
+      - "New Operator / Update"
+      - "Import Operator"
+    target:
+      type: environment
+      name: SETUP_MODE
+      service: operator
+    required: false
+
+  - id: builder-proposals
+    target:
+      type: environment
+      name: BUILDER_PROPOSALS
+      service: operator
+    title: Builder Proposals
+    description: |-
+      Whether to enable MEV block production. Requires the connected Beacon node to be MEV-enabled.
+    enum:
+      - "true"
+      - "false"
+    required: true
+    default: "false"
+
+  - id: encrypted-private-key
+    target:
+      type: fileUpload
+      path: /data/operator/config/encrypted_private_key.json
+      service: operator
+    title: Encrypted private key
+    description: |
+      Provide here the encrypted private key in JSON format.
+    pattern: "\\.json"
+    required: true
+    if: { "setup-mode": { "enum": ["Import Operator"] } }
+
+  - id: encrypted-private-key-pass
+    target:
+      type: environment
+      name: PRIVATE_KEY_PASS
+      service: operator
+    title: Encrypted private key password
+    secret: true
+    description: |
+      Provide here the encrypted private key password.
+    required: true
+    if: { "setup-mode": { "enum": ["Import Operator"] } }

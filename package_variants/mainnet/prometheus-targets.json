@@ -1,0 +1,18 @@
+[
+  {
+    "labels": {
+      "package": "ssv.dnp.dappnode.eth",
+      "service": "operator.ssv.dappnode",
+      "__metrics_path__": "/metrics"
+    },
+    "targets": ["operator.ssv.dappnode:15000"]
+  },
+  {
+    "labels": {
+      "package": "ssv.dnp.dappnode.eth",
+      "service": "operator.ssv.dappnode",
+      "__metrics_path__": "/health"
+    },
+    "targets": ["operator.ssv.dappnode:15000"]
+  }
+]
