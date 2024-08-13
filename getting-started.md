@@ -1,6 +1,6 @@
-# **SSV Holesky**
+# **SSV / SSV Holesky**
 
-The SSV Network is a decentralized, open-source Ethereum staking network that enhances validator key security and network redundancy using Distributed Validator Technology (DVT). This package allows you to run an SSV Operator Node for the Holesky testnet.
+The SSV Network is a decentralized, open-source Ethereum staking network that enhances validator key security and network redundancy using Distributed Validator Technology (DVT). This package allows you to run an SSV Operator Node on mainnet, or for the Holesky testnet.
 
 ## Requirements
 
