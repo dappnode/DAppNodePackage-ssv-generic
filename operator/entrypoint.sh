@@ -99,6 +99,7 @@ create_operator_config() {
   echo "[INFO] Modifying the operator config..."
   jq '.global.LogLevel = env.LOG_LEVEL |
       .global.LogFilePath = env.NODE_LOG_FILE |
+      .global.LogFileBackups = env.LOG_FILE_BACKUPS |
       .db.Path = env.OPERATOR_DB_DIR |
       .ssv.Network = env.NETWORK |
       .ssv.ValidatorOptions.BuilderProposals = (env.BUILDER_PROPOSALS == "true") |

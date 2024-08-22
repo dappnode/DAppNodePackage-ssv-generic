@@ -1,6 +1,7 @@
 global:
   LogLevel:
   LogFilePath: /data/node.log
+  LogFileBackups:
 
 db:
   Path:

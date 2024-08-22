@@ -12,6 +12,7 @@ services:
     environment:
       BUILDER_PROPOSALS: "false"
       LOG_LEVEL: info
+      LOG_FILE_BACKUPS: 3
       EXTRA_OPTS: ""
       PRIVATE_KEY_PASS: ""
   dkg:
