@@ -117,6 +117,12 @@ create_operator_config() {
   rm -f "${raw_json_config_file}" "${modified_json_config_file}"
 }
 
+# Parses numbers between quotes into integers
+parse_numbers_in_operator_config() {
+  echo "[INFO] Parsing numbers in the operator config..."
+  sed -i "s/'\([0-9]\+\)'/\1/g" "${NODE_CONFIG_FILE}"
+}
+
 start_operator() {
   echo "[INFO] Starting SSV operator..."
 
@@ -145,6 +151,7 @@ main() {
   handle_private_key
   post_pubkey_to_dappmanager
   create_operator_config
+  parse_numbers_in_operator_config
   start_operator
 }
 
