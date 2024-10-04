@@ -4,7 +4,7 @@ services:
     build:
       context: operator
       args:
-        OPERATOR_UPSTREAM_VERSION: v2.0.0-unstable.0
+        OPERATOR_UPSTREAM_VERSION: v2.0.0-unstable.1
         STAKER_SCRIPTS_VERSION: v0.1.0
     restart: unless-stopped
     volumes:
