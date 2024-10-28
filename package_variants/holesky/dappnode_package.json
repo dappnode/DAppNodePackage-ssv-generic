@@ -6,5 +6,6 @@
       "envs": ["EXECUTION_CLIENT_HOLESKY", "CONSENSUS_CLIENT_HOLESKY"],
       "services": ["operator"]
     }
-  ]
+  ],
+  "shortDescription": "SSV for Holesky",
 }
