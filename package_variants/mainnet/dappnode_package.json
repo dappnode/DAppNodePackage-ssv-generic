@@ -6,5 +6,6 @@
       "envs": ["EXECUTION_CLIENT_MAINNET", "CONSENSUS_CLIENT_MAINNET"],
       "services": ["operator"]
     }
-  ]
+  ],
+  "shortDescription": "SSV for Mainnet"
 }
