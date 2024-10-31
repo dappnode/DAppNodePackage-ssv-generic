@@ -1,6 +1,6 @@
 {
   "name": "ssv-holesky.dnp.dappnode.eth",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "globalEnvs": [
     {
       "envs": ["EXECUTION_CLIENT_HOLESKY", "CONSENSUS_CLIENT_HOLESKY"],
