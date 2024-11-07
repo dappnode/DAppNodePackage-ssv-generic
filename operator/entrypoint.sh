@@ -13,8 +13,6 @@ export NODE_LOG_FILE=${OPERATOR_LOGS_DIR}/node.log
 DEFAULT_PRIVATE_KEY_FILE=/encrypted_private_key.json
 RAW_NODE_YML_CONFIG_FILE=${NODE_CONFIG_DIR}/raw-node-config.yml
 
-SUPPORTED_NETWORKS="mainnet holesky"
-
 # To use staker scripts
 # shellcheck disable=SC1091
 . /etc/profile
@@ -24,14 +22,13 @@ create_directories() {
 }
 
 assign_execution_endpoint() {
-  # TODO: Set all execution clients WS port to 8546
-  EXECUTION_LAYER_WS=$(get_execution_ws_url_from_global_env "$NETWORK" "$SUPPORTED_NETWORKS")
+  EXECUTION_LAYER_WS=$(get_execution_ws_url_from_global_env "$NETWORK")
 
   export EXECUTION_LAYER_WS
 }
 
 assign_beacon_endpoint() {
-  BEACON_NODE_API=$(get_beacon_api_url_from_global_env "$NETWORK" "$SUPPORTED_NETWORKS")
+  BEACON_NODE_API=$(get_beacon_api_url_from_global_env "$NETWORK")
 
   export BEACON_NODE_API
 }
