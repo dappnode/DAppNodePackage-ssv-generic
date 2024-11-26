@@ -7,5 +7,8 @@
       "services": ["operator"]
     }
   ],
-  "shortDescription": "SSV for Mainnet"
+  "optionalDependencies": {
+    "nethermind.public.dappnode.eth": ">=1.0.55"
+  },
+  "shortDescription": "SSV for Ethereum Mainnet"
 }
