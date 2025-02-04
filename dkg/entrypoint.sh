@@ -14,6 +14,15 @@ DKG_LOG_FILE=${DKG_LOGS_DIR}/dkg.log
 CERT_FILE="$DKG_CERT_DIR/tls.crt"
 KEY_FILE="$DKG_CERT_DIR/tls.key"
 
+# To use staker scripts
+# shellcheck disable=SC1091
+. /etc/profile
+
+assign_execution_endpoint() {
+  EXECUTION_LAYER=$(get_execution_rpc_api_url_from_global_env "$NETWORK")
+  export EXECUTION_LAYER
+}
+
 create_directories() {
     mkdir -p "${DKG_CONFIG_DIR}" "${DKG_LOGS_DIR}" "${DKG_OUTPUT_DIR}"
 }
@@ -95,19 +104,21 @@ generate_tls_cert() {
 start_dkg() {
     exec /bin/ssv-dkg start-operator \
         --operatorID "${OPERATOR_ID}" \
-        --configPath "${DKG_CONFIG_FILE}" \
-        --logFilePath "${DKG_LOG_FILE}" \
+        --configPath ".${DKG_CONFIG_FILE}" \
+        --logFilePath ".${DKG_LOG_FILE}" \
         --logLevel "${LOG_LEVEL}" \
-        --outputPath "${DKG_OUTPUT_DIR}" \
+        --outputPath ".${DKG_OUTPUT_DIR}" \
         --port "${DKG_PORT}" \
-        --privKey "${PRIVATE_KEY_FILE}" \
-        --privKeyPassword "${PRIVATE_KEY_PASSWORD_FILE}" \
-        --serverTLSCertPath "${CERT_FILE}" \
-        --serverTLSKeyPath "${KEY_FILE}"
+        --privKey ".${PRIVATE_KEY_FILE}" \
+        --privKeyPassword ".${PRIVATE_KEY_PASSWORD_FILE}" \
+        --serverTLSCertPath ".${CERT_FILE}" \
+        --ethEndpointURL "${EXECUTION_LAYER}" \
+        --serverTLSKeyPath ".${KEY_FILE}"
 }
 
 main() {
     create_directories
+    assign_execution_endpoint
     wait_for_private_key
     get_operator_id
     generate_tls_cert

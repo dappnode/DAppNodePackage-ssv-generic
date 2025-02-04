@@ -1,9 +1,11 @@
 ARG DGK_UPSTREAM_VERSION
+FROM ssvlabs/ssv-dkg:${DGK_UPSTREAM_VERSION}
 
-FROM bloxstaking/ssv-dkg:${DGK_UPSTREAM_VERSION}
+WORKDIR /
 
 ARG NETWORK
 ARG DKG_PORT
+ARG STAKER_SCRIPTS_VERSION
 
 RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community \
     yq inotify-tools jq curl
@@ -16,6 +18,8 @@ ENV DKG_PORT=${DKG_PORT} \
     OPERATOR_DATA_DIR=/data/operator \
     NETWORK=${NETWORK} \
     METRICS_PORT=15000 \
-    DKG_CONFIG_DIR=/ssv-dkg/config
+    DKG_CONFIG_DIR=/ssv-dkg/config \
+    STAKER_SCRIPTS_URL=https://github.com/dappnode/staker-package-scripts/releases/download/${STAKER_SCRIPTS_VERSION}
 
+ADD ${STAKER_SCRIPTS_URL}/dvt_lsd_tools.sh /etc/profile.d/
 ENTRYPOINT [ "entrypoint.sh" ]
