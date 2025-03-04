@@ -7,7 +7,7 @@
     },
     {
       "repo": "ssvlabs/ssv-dkg",
-      "version": "v3.0.1",
+      "version": "v3.0.2",
       "arg": "DKG_UPSTREAM_VERSION"
     },
     {
