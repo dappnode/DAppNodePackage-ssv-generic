@@ -1,6 +1,6 @@
 # **SSV**
 
-The SSV Network is a decentralized, open-source Ethereum staking network that enhances validator key security and network redundancy using Distributed Validator Technology (DVT). This package allows you to run an SSV Operator Node on Ethereum mainnet or Holesky testnet.
+The SSV Network is a decentralized, open-source Ethereum staking network that enhances validator key security and network redundancy using Distributed Validator Technology (DVT). This package allows you to run an SSV Operator Node on Ethereum mainnet, or Hoodi/Holesky testnets.
 
 ## Requirements
 
@@ -21,13 +21,14 @@ The SSV Network is a decentralized, open-source Ethereum staking network that en
 1. Verify that your operator is registered on the SSV network, and confirm that the DKG service is running by checking the SSV Info tab.
 
 2. Configure your node as a DKG endpoint by adding your DKG endpoint in the [SSV App Operator Config](https://app.ssv.network/my-account/operator/edit-metadata). The DKG endpoint will be:
+    - For hoodi: `http://<your-public-ip>:14514`
     - For holesky: `http://<your-public-ip>:14515`
     - For mainnet: `http://<your-public-ip>:14516`
 
 ## Troubleshoting
 
-- If the `OPERATOR_ID` is not retrieved automatically by the DKG service from the SSV API, you can manually enter it in the [SSV Config Tab](http://my.dappnode/packages/my/ssv-holesky.dnp.dappnode.eth/config).
+- If the `OPERATOR_ID` is not retrieved automatically by the DKG service from the SSV API, you can manually enter it in the [SSV Config Tab](http://my.dappnode/packages/my/ssv.dnp.dappnode.eth/config).
 
-- Remember the DKG port (14515 or 14516) must be open in your router. If UPnP is enabled, this will be done automatically.
+- Remember the DKG port (14514, 14515 or 14516) must be open in your router. If UPnP is enabled, this will be done automatically.
 
 For comprehensive information and additional resources, refer to the full official documentation [here](https://docs.ssv.network/learn/introduction).
