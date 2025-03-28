@@ -1,0 +1,17 @@
+services:
+  operator:
+    build:
+      args:
+        NETWORK: hoodi
+        P2P_TCP_PORT: 12513
+        P2P_UDP_PORT: 13513
+    ports:
+      - 12513:12513/tcp
+      - 13513:13513/udp
+  dkg:
+    build:
+      args:
+        NETWORK: hoodi
+        DKG_PORT: 14514
+    ports:
+      - "14514:14514"

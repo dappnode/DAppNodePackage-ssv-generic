@@ -1,6 +1,6 @@
 # SSV Dappnode Package
 
-The **SSV Network** (Secret Shared Validator) is a decentralized, open-source Ethereum staking network that enhances validator key security and network redundancy using **Distributed Validator Technology (DVT)**. This package allows you to run an **SSV Operator Node** along with its **DKG service** for distributed key generation, operating on either the Ethereum mainnet or the Holesky testnet.
+The **SSV Network** (Secret Shared Validator) is a decentralized, open-source Ethereum staking network that enhances validator key security and network redundancy using **Distributed Validator Technology (DVT)**. This package allows you to run an **SSV Operator Node** along with its **DKG service** for distributed key generation, operating on either the Ethereum mainnet or the Hoodi testnet.
 
 ### Services
 
@@ -22,7 +22,7 @@ This package includes the following services:
 
   - This service communicates with the SSV network to securely create and manage the validator keys. Configuration files for DKG are stored in `/data/dkg/config` and logs in `/data/dkg/logs`.
 
-  - The DKG service uses port `14515` for the Holesky testnet and `14516` for the mainnet.
+  - The DKG service uses port `14515` for Holesky testnet, `14514`for Hoodi testnet and `14516` for the mainnet.
 
 ### Configuration
 
@@ -31,8 +31,8 @@ This package includes the following services:
   - **New Operator / Update**: Set up a new operator or perform a simple update to an existing one.
   - **Import Operator**: Import an existing operator by uploading the encrypted private key and password.
 
-- **DKG Configuration**: The DKG endpoint is automatically configured based on the network (mainnet or Holesky) and can be accessed through the respective public IP address:
-
+- **DKG Configuration**: The DKG endpoint is automatically configured based on the network (mainnet, holesky or hoodi) and can be accessed through the respective public IP address:
+  - For **Hoodi**: `http://<your-public-ip>:14514`
   - For **Holesky**: `http://<your-public-ip>:14515`
   - For **Mainnet**: `http://<your-public-ip>:14516`
 
