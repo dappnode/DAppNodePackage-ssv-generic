@@ -5,7 +5,7 @@ services:
       context: operator
       args:
         OPERATOR_UPSTREAM_VERSION: v2.2.0
-        STAKER_SCRIPTS_VERSION: v0.1.1
+        STAKER_SCRIPTS_VERSION: v0.1.2
     restart: unless-stopped
     volumes:
       - operator-data:/data/operator
@@ -20,7 +20,7 @@ services:
       context: dkg
       args:
         DGK_UPSTREAM_VERSION: v3.0.1
-        STAKER_SCRIPTS_VERSION: v0.1.1
+        STAKER_SCRIPTS_VERSION: v0.1.2
     restart: on-failure
     volumes:
       - operator-data:/data/operator
