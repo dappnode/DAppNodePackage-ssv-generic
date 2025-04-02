@@ -7,7 +7,7 @@
     }
   ],
   "name": "ssv-hoodi.dnp.dappnode.eth",
-  "version": "0.1.6",
+  "version": "0.1.0",
   "globalEnvs": [
     {
       "envs": ["EXECUTION_CLIENT_HOODI", "CONSENSUS_CLIENT_HOODI"],
