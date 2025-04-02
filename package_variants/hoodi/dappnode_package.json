@@ -1,11 +1,4 @@
 {
-  "upstream": [
-    {
-      "repo": "ssvlabs/ssv",
-      "version": "v2.2.0-unstable.1",
-      "arg": "OPERATOR_UPSTREAM_VERSION"
-    }
-  ],
   "name": "ssv-hoodi.dnp.dappnode.eth",
   "version": "0.1.0",
   "globalEnvs": [
@@ -13,5 +6,6 @@
       "envs": ["EXECUTION_CLIENT_HOODI", "CONSENSUS_CLIENT_HOODI"],
       "services": ["operator"]
     }
-  ]
+  ],
+  "shortDescription": "SSV for Ethereum Hoodi"
 }
