@@ -6282,8 +6282,8 @@
       {
         "current": {
           "selected": false,
-          "text": "operator.ssv-holesky.dappnode",
-          "value": "operator.ssv-holesky.dappnode:15000"
+          "text": "operator.ssv.dappnode",
+          "value": "operator.ssv.dappnode:15000"
         },
         "hide": 1,
         "includeAll": false,
@@ -6292,11 +6292,11 @@
         "options": [
           {
             "selected": false,
-            "text": "operator.ssv-holesky.dappnode",
-            "value": "operator.ssv-holesky.dappnode:15000"
+            "text": "operator.ssv.dappnode",
+            "value": "operator.ssv.dappnode:15000"
           }
         ],
-        "query": "operator.ssv-holesky.dappnode",
+        "query": "operator.ssv.dappnode",
         "queryValue": "",
         "skipUrlSync": false,
         "type": "custom"
