@@ -11,7 +11,8 @@ RUN apk update
 RUN apk add --no-cache curl zip
 
 # Download given version from Github and unzip
-RUN curl -L -o /ssv-dkg.zip https://github.com/ssvlabs/ssv-dkg/releases/download/${DGK_UPSTREAM_VERSION}/ssvdkg-${DGK_UPSTREAM_VERSION}-linux-$(uname -m).zip
+RUN echo https://github.com/ssvlabs/ssv-dkg/releases/download/$DGK_UPSTREAM_VERSION/ssvdkg-$DGK_UPSTREAM_VERSION-linux-$(uname -m).zip
+RUN curl -L -o /ssv-dkg.zip https://github.com/ssvlabs/ssv-dkg/releases/download/$DGK_UPSTREAM_VERSION/ssvdkg-$DGK_UPSTREAM_VERSION-linux-$(uname -m).zip
 RUN unzip -j /ssv-dkg.zip
 
 FROM alpine:3.21
