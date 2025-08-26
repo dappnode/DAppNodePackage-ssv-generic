@@ -1,5 +1,23 @@
 ARG DGK_UPSTREAM_VERSION
-FROM ssvlabs/ssv-dkg:${DGK_UPSTREAM_VERSION}
+
+# Final stage
+FROM alpine:3.21 as build
+
+WORKDIR /
+RUN cd /
+
+# Install curl and zip
+RUN apk update
+RUN apk add --no-cache curl zip
+
+# Download given version from Github and unzip
+RUN curl -L -o /ssv-dkg.zip https://github.com/ssvlabs/ssv-dkg/releases/download/${DGK_UPSTREAM_VERSION}/ssvdkg-${DGK_UPSTREAM_VERSION}-linux-$(uname -m).zip
+RUN unzip -j /ssv-dkg.zip
+
+FROM alpine:3.21
+
+# Copy the built binary from the previous stage/build context
+COPY --from=build /ssv-dkg /bin/ssv-dkg
 
 WORKDIR /
 
@@ -22,4 +40,6 @@ ENV DKG_PORT=${DKG_PORT} \
     STAKER_SCRIPTS_URL=https://github.com/dappnode/staker-package-scripts/releases/download/${STAKER_SCRIPTS_VERSION}
 
 ADD ${STAKER_SCRIPTS_URL}/dvt_lsd_tools.sh /etc/profile.d/
+
+EXPOSE 3030
 ENTRYPOINT [ "entrypoint.sh" ]
