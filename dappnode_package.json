@@ -1,51 +1,9 @@
 {
-  "upstream": [
-    {
-      "repo": "ssvlabs/ssv",
-      "version": "v2.4.3",
-      "arg": "OPERATOR_UPSTREAM_VERSION"
-    },
-    {
-      "repo": "ssvlabs/ssv-dkg",
-      "version": "v3.0.3",
-      "arg": "DKG_UPSTREAM_VERSION"
-    },
-    {
-      "repo": "dappnode/staker-package-scripts",
-      "version": "v0.1.2",
-      "arg": "STAKER_SCRIPTS_VERSION"
-    }
+  "architectures": [
+    "linux/amd64",
+    "linux/arm64"
   ],
-  "architectures": ["linux/amd64", "linux/arm64"],
-  "shortDescription": "SSV",
-  "description": "The SSV Network is a decentralized, open-source Ethereum staking network that enhances validator key security and network redundancy using Distributed Validator Technology (DVT)",
-  "type": "service",
   "author": "DAppNode Association <admin@dappnode.io> (https://github.com/dappnode)",
-  "contributors": [
-    "Eduardo Antuña <edu@dappnode.io> (https://github.com/eduadiez)",
-    "Voss <voss@VisNovaLabs.io> (https://github.com/alexpeterson91)"
-  ],
-  "categories": ["Lido", "ETH2.0"],
-  "license": "GPL-3.0",
-  "mainService": "operator",
-  "links": {
-    "SSV.Network Explorer": "https://explorer.ssv.network/",
-    "Homepage": "https://ssv.network/",
-    "Validator Deposit Bot": "https://discord.gg/CBwPUX2Aav",
-    "Docs": "https://docs.ssv.network/learn/introduction",
-    "tSSV Faucet": "https://faucet.ssv.network/",
-    "SSV Web App": "http://app.ssv.network/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dappnode/DAppNodePackage-SSV-generic.git"
-  },
-  "bugs": {
-    "url": "https://github.com/dappnode/DAppNodePackage-SSV-generic/issues"
-  },
-  "requirements": {
-    "minimumDappnodeVersion": "0.2.101"
-  },
   "backup": [
     {
       "name": "operator-config",
@@ -56,6 +14,54 @@
       "name": "dkg-output",
       "path": "/data/dkg/output",
       "service": "dkg"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/dappnode/DAppNodePackage-SSV-generic/issues"
+  },
+  "categories": [
+    "Lido",
+    "ETH2.0"
+  ],
+  "contributors": [
+    "Eduardo Antuña <edu@dappnode.io> (https://github.com/eduadiez)",
+    "Voss <voss@VisNovaLabs.io> (https://github.com/alexpeterson91)"
+  ],
+  "description": "The SSV Network is a decentralized, open-source Ethereum staking network that enhances validator key security and network redundancy using Distributed Validator Technology (DVT)",
+  "license": "GPL-3.0",
+  "links": {
+    "Docs": "https://docs.ssv.network/learn/introduction",
+    "Homepage": "https://ssv.network/",
+    "SSV Web App": "http://app.ssv.network/",
+    "SSV.Network Explorer": "https://explorer.ssv.network/",
+    "Validator Deposit Bot": "https://discord.gg/CBwPUX2Aav",
+    "tSSV Faucet": "https://faucet.ssv.network/"
+  },
+  "mainService": "operator",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dappnode/DAppNodePackage-SSV-generic.git"
+  },
+  "requirements": {
+    "minimumDappnodeVersion": "0.2.101"
+  },
+  "shortDescription": "SSV",
+  "type": "service",
+  "upstream": [
+    {
+      "arg": "OPERATOR_UPSTREAM_VERSION",
+      "repo": "ssvlabs/ssv",
+      "version": "v2.4.3"
+    },
+    {
+      "arg": "DKG_UPSTREAM_VERSION",
+      "repo": "ssvlabs/ssv-dkg",
+      "version": "v3.1.0"
+    },
+    {
+      "arg": "STAKER_SCRIPTS_VERSION",
+      "repo": "dappnode/staker-package-scripts",
+      "version": "v0.1.2"
     }
   ]
 }
