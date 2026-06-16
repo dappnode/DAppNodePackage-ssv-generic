@@ -1,7 +1,7 @@
 # Build stage
 FROM alpine:3.21 as build
 
-ARG DGK_UPSTREAM_VERSION
+ARG DKG_UPSTREAM_VERSION
 
 WORKDIR /
 RUN cd /
@@ -11,7 +11,7 @@ RUN apk update
 RUN apk add --no-cache curl zip
 
 # Download given version from Github and unzip
-RUN curl -L -o /ssv-dkg.zip https://github.com/ssvlabs/ssv-dkg/releases/download/${DGK_UPSTREAM_VERSION}/ssvdkg-${DGK_UPSTREAM_VERSION}-linux-$(uname -m | sed -e 's/aarch64/arm64/g' -e 's/x86_64/amd64/g').zip
+RUN curl -L -o /ssv-dkg.zip https://github.com/ssvlabs/ssv-dkg/releases/download/${DKG_UPSTREAM_VERSION}/ssvdkg-${DKG_UPSTREAM_VERSION}-linux-$(uname -m | sed -e 's/aarch64/arm64/g' -e 's/x86_64/amd64/g').zip
 RUN unzip -j /ssv-dkg.zip
 
 # Final stage
