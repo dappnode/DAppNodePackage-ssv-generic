@@ -5,9 +5,9 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: npx @dappnode/dappnodesdk github-action build --variant mainnet
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
