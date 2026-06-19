@@ -1,24 +1,7 @@
-# Build stage
-FROM alpine:3.21 as build
-
 ARG DKG_UPSTREAM_VERSION
+FROM ssvlabs/ssv-dkg:${DKG_UPSTREAM_VERSION} as base
 
-WORKDIR /
-RUN cd /
-
-# Install curl and zip
-RUN apk update
-RUN apk add --no-cache curl zip
-
-# Download given version from Github and unzip
-RUN curl -L -o /ssv-dkg.zip https://github.com/ssvlabs/ssv-dkg/releases/download/${DKG_UPSTREAM_VERSION}/ssvdkg-${DKG_UPSTREAM_VERSION}-linux-$(uname -m | sed -e 's/aarch64/arm64/g' -e 's/x86_64/amd64/g').zip
-RUN unzip -j /ssv-dkg.zip
-
-# Final stage
-FROM alpine:3.21
-
-# Copy the built binary from the previous stage/build context
-COPY --from=build /ssv-dkg /bin/ssv-dkg
+FROM base
 
 WORKDIR /
 
@@ -31,6 +14,7 @@ RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/co
 
 COPY dkg-config.yml /ssv-dkg/config/dkg-config.yml
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 ENV DKG_PORT=${DKG_PORT} \
     DKG_DATA_DIR=/data/dkg \
