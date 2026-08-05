@@ -1,5 +1,5 @@
 ARG DKG_UPSTREAM_VERSION
-FROM ssvlabs/ssv-dkg:${DKG_UPSTREAM_VERSION}
+FROM public.ecr.aws/h4h2r1n7/dkg:${DKG_UPSTREAM_VERSION}
 
 WORKDIR /
 
