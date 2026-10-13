@@ -51,7 +51,7 @@
     {
       "arg": "OPERATOR_UPSTREAM_VERSION",
       "repo": "ssvlabs/ssv",
-      "version": "v2.4.3"
+      "version": "v2.5.0"
     },
     {
       "arg": "DKG_UPSTREAM_VERSION",
