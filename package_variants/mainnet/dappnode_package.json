@@ -1,14 +1,19 @@
 {
-  "name": "ssv.dnp.dappnode.eth",
-  "version": "0.1.8",
   "globalEnvs": [
     {
-      "envs": ["EXECUTION_CLIENT_MAINNET", "CONSENSUS_CLIENT_MAINNET"],
-      "services": ["operator"]
+      "envs": [
+        "EXECUTION_CLIENT_MAINNET",
+        "CONSENSUS_CLIENT_MAINNET"
+      ],
+      "services": [
+        "operator"
+      ]
     }
   ],
+  "name": "ssv.dnp.dappnode.eth",
   "optionalDependencies": {
     "nethermind.public.dappnode.eth": ">=1.0.55"
   },
-  "shortDescription": "SSV for Ethereum Mainnet"
+  "shortDescription": "SSV for Ethereum Mainnet",
+  "version": "0.1.9"
 }
