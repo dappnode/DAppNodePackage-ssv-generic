@@ -64,11 +64,12 @@ handle_private_key() {
 }
 
 post_pubkey_to_dappmanager() {
-  PUBLIC_KEY=$(jq -r '.pubKey' "${PRIVATE_KEY_FILE}")
+  # The field name varies by keystore format/version: pubKey, publicKey or pubkey
+  PUBLIC_KEY=$(jq -r '(.pubKey // .publicKey // .pubkey // empty)' "${PRIVATE_KEY_FILE}")
 
-  # If the PUBLIC_KEY is empty, try extracting using the '.publicKey' field (for previous SSV versions)
-  if [ -z "$PUBLIC_KEY" ] || [ "$PUBLIC_KEY" = "null" ]; then
-    PUBLIC_KEY=$(jq -r '.publicKey' "${PRIVATE_KEY_FILE}")
+  if [ -z "${PUBLIC_KEY}" ]; then
+    echo "[ERROR] Public key not found in ${PRIVATE_KEY_FILE}. Fields present: $(jq -c 'keys' "${PRIVATE_KEY_FILE}")"
+    return 0
   fi
 
   curl --connect-timeout 5 \
