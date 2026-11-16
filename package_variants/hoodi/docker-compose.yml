@@ -12,6 +12,6 @@ services:
     build:
       args:
         NETWORK: hoodi
-        DKG_PORT: 14514
+        DKG_PORT: 14513
     ports:
-      - "14514:14514"
+      - "14513:14513"
