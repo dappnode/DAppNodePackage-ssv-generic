@@ -103,8 +103,8 @@ create_operator_config() {
       .ssv.ValidatorOptions.BuilderProposals = (env.BUILDER_PROPOSALS == "true") |
       .eth2.BeaconNodeAddr = env.BEACON_NODE_API |
       .eth1.ETH1Addr = env.EXECUTION_LAYER_WS |
-      .p2p.TCPPort = env.P2P_TCP_PORT |
-      .p2p.UDPPort = env.P2P_UDP_PORT |
+      .p2p.TcpPort = env.P2P_TCP_PORT |
+      .p2p.UdpPort = env.P2P_UDP_PORT |
       .KeyStore.PrivateKeyFile = env.PRIVATE_KEY_FILE |
       .KeyStore.PasswordFile = env.PRIVATE_KEY_PASSWORD_FILE' "${raw_json_config_file}" >"${modified_json_config_file}"
 
