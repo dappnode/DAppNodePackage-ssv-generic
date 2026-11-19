@@ -18,8 +18,8 @@ eth1:
   ETH1Addr:
 
 p2p:
-  TCPPort:
-  UDPPort:
+  TcpPort:
+  UdpPort:
 
 KeyStore:
   PrivateKeyFile:
