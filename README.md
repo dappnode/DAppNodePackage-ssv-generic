@@ -56,6 +56,8 @@ The package supports backup and restore functionality for both the operator and 
 - **Operator Config**: The configuration and keys for the operator are stored in `/data/operator/config`.
 - **DKG Output**: The generated key shares from the DKG process are stored in `/data/dkg/output`.
 
+The node database (`/data/operator/db`) is intentionally not part of the backup. It holds the SSV network state, which re-syncs from the SSV contract, and the slashing protection (highest attestation and proposal per validator share), which SSV keeps inside the same database and cannot export. When the restored operator key does not match the database, the database is wiped and re-synced. During that re-sync SSV sets the slashing protection of every share to the current epoch and slot and only lets the validators participate from the next epoch, which is safer than restoring an older copy of the database. Never run the old and the restored node at the same time.
+
 It's recommended to download a backup immediately after completing the operator registration to secure all critical files.
 
 For more detailed steps, please refer to the [SSV Network documentation](https://docs.ssv.network/learn/introduction).

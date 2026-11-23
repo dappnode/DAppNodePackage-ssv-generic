@@ -130,7 +130,8 @@ start_operator() {
   EXIT_STATUS=$?
 
   # Backup restoring causes the operator to find a mismatch in the DB
-  if [ $EXIT_STATUS -ne 0 ] && grep -q "operator private key is not matching the one encrypted the storage" "${NODE_LOG_FILE}"; then
+  # The first message is logged by ssv < v2.5.0, the second one by ssv >= v2.5.0
+  if [ $EXIT_STATUS -ne 0 ] && grep -qE "operator private key (is not matching the one encrypted|does not match the one that encrypted) the storage" "${NODE_LOG_FILE}"; then
     echo "[WARN] Detected private key mismatch, probably due to backup restoring. Removing DB and retrying..."
     # Added :? to prevent accidental deletion of root directory (if $OPERATOR_DB_DIR is empty or unset)
     rm -rf "${OPERATOR_DB_DIR:?}"/*
