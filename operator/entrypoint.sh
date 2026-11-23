@@ -124,13 +124,17 @@ parse_numbers_in_operator_config() {
 start_operator() {
   echo "[INFO] Starting SSV operator..."
 
+  # node.log keeps the lines of previous runs: only check the ones written by this run
+  LOG_OFFSET=$(stat -c %s "${NODE_LOG_FILE}" 2>/dev/null || echo 0)
+
   /go/bin/ssvnode start-node --config "${NODE_CONFIG_FILE}" "${EXTRA_OPTS}" &
 
   wait $!
   EXIT_STATUS=$?
 
   # Backup restoring causes the operator to find a mismatch in the DB
-  if [ $EXIT_STATUS -ne 0 ] && grep -q "operator private key is not matching the one encrypted the storage" "${NODE_LOG_FILE}"; then
+  # The first message is logged by ssv < v2.5.0, the second one by ssv >= v2.5.0
+  if [ $EXIT_STATUS -ne 0 ] && tail -c +$((LOG_OFFSET + 1)) "${NODE_LOG_FILE}" | grep -qE "operator private key (is not matching the one encrypted|does not match the one that encrypted) the storage"; then
     echo "[WARN] Detected private key mismatch, probably due to backup restoring. Removing DB and retrying..."
     # Added :? to prevent accidental deletion of root directory (if $OPERATOR_DB_DIR is empty or unset)
     rm -rf "${OPERATOR_DB_DIR:?}"/*
