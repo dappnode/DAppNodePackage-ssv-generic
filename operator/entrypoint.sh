@@ -126,11 +126,18 @@ start_operator() {
 
   # node.log keeps the lines of previous runs: only check the ones written by this run
   LOG_OFFSET=$(stat -c %s "${NODE_LOG_FILE}" 2>/dev/null || echo 0)
+  LOG_INODE=$(stat -c %i "${NODE_LOG_FILE}" 2>/dev/null || echo none)
 
   /go/bin/ssvnode start-node --config "${NODE_CONFIG_FILE}" "${EXTRA_OPTS}" &
 
   wait $!
   EXIT_STATUS=$?
+
+  # If the node rotated node.log during this run, the current file is a new one written only by this run
+  if [ "$(stat -c %i "${NODE_LOG_FILE}" 2>/dev/null || echo none)" != "${LOG_INODE}" ] ||
+    [ "$(stat -c %s "${NODE_LOG_FILE}" 2>/dev/null || echo 0)" -lt "${LOG_OFFSET}" ]; then
+    LOG_OFFSET=0
+  fi
 
   # Backup restoring causes the operator to find a mismatch in the DB
   # The first message is logged by ssv < v2.5.0, the second one by ssv >= v2.5.0
